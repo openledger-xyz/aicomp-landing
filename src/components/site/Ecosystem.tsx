@@ -32,7 +32,7 @@ export function Ecosystem() {
                 loop 
                 muted 
                 playsInline 
-                className="w-36 sm:w-48 md:w-56 lg:w-64 h-auto object-contain pointer-events-none"
+                className="w-48 sm:w-56 md:w-56 lg:w-64 h-auto object-contain pointer-events-none"
               >
                 <source src="/Photo.mp4" type="video/mp4" />
               </video>
