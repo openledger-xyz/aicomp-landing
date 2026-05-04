@@ -26,7 +26,7 @@ export function Ecosystem() {
               <ScrambledText as="h2" className="h-section leading-none m-0" text="building on it." />
             </div>
             
-            <div className="flex items-center justify-center reveal relative z-10 shrink-0" style={{ transform: "translateY(0.5rem)" }}>
+            <div className="flex items-center justify-center reveal relative z-30 shrink-0" style={{ transform: "translateY(0.5rem)" }}>
               <video 
                 autoPlay 
                 loop 
