@@ -41,7 +41,17 @@ function MobileCreatorSlideshow() {
   }, []);
 
   return (
-    <div style={{ position: "relative", width: "100%", height: 380, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", marginTop: 24, marginBottom: 24 }}>
+    <div style={{ 
+      position: "relative", 
+      width: "100%", 
+      height: "clamp(420px, 70vw, 600px)", 
+      display: "flex", 
+      flexDirection: "column", 
+      alignItems: "center", 
+      justifyContent: "center",
+      WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
+      maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)"
+    }}>
       <div style={{ position: "relative", width: "100%", flex: 1, display: "flex", alignItems: "center", justifyContent: "center", minHeight: 0 }}>
         {DOPETWIN_FEATURES.map((feat, idx) => {
           let offset = idx - activeIdx;
@@ -69,8 +79,8 @@ function MobileCreatorSlideshow() {
                 position: "absolute",
                 top: "50%",
                 left: "50%",
-                width: "min(55%, 220px)",
-                aspectRatio: "2/3",
+                width: "min(72%, 340px)",
+                aspectRatio: "3/5",
                 background: "var(--background)",
                 overflow: "hidden",
                 cursor: "pointer",

@@ -13,7 +13,7 @@ export function Ecosystem() {
     <section id="ecosystem" className="py-24 lg:py-32" style={{ borderBottom: "1px solid var(--ink)" }}>
       <div className="container-x">
         <div className="flex flex-col w-full relative">
-          <div className="reveal mb-6">
+          <div className="reveal mb-2">
             <span className="section-label">
               <span className="material-symbols-outlined">hub</span>
               ECOSYSTEM
