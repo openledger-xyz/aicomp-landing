@@ -26,13 +26,13 @@ export function Ecosystem() {
               <ScrambledText as="h2" className="h-section leading-none m-0" text="building on it." />
             </div>
             
-            <div className="flex items-center justify-center reveal relative z-30 shrink-0" style={{ transform: "translateY(0.5rem)" }}>
+            <div className="flex items-center justify-center reveal relative z-30 shrink-0 lg:-translate-y-8" style={{ transform: "translateY(0.5rem)" }}>
               <video 
                 autoPlay 
                 loop 
                 muted 
                 playsInline 
-                className="w-36 sm:w-48 md:w-64 lg:w-80 h-auto object-contain pointer-events-none"
+                className="w-36 sm:w-48 md:w-56 lg:w-64 h-auto object-contain pointer-events-none"
               >
                 <source src="/Photo.mp4" type="video/mp4" />
               </video>
@@ -40,7 +40,7 @@ export function Ecosystem() {
           </div>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-14 lg:-mt-24 relative z-20">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-14 lg:-mt-12 relative z-20">
           {items.map((it) => (
             <div
               key={it.t}
