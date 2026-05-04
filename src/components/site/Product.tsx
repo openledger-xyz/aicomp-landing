@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrambledText } from "@/components/kinetic/ScrambledText";
 import CoverflowGallery from "./CoverflowGallery";
 import HoverFlipCard from "./HoverFlipCard";
+import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,22 +31,73 @@ function FeatureFace({ src, title }: { src: string; title: string }) {
 }
 
 function MobileCreatorSlideshow() {
-  const [index, setIndex] = useState(0);
+  const [activeIdx, setActiveIdx] = useState(2);
   
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % DOPETWIN_FEATURES.length);
-    }, 2500);
+      setActiveIdx((prev) => (prev + 1) % DOPETWIN_FEATURES.length);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div style={{ aspectRatio: "2/3", width: "100%", maxWidth: 300, margin: "0 auto", position: "relative" }}>
-      {DOPETWIN_FEATURES.map((f, i) => (
-        <div key={f.title} style={{ position: "absolute", inset: 0, opacity: i === index ? 1 : 0, transition: "opacity 0.5s ease-in-out" }}>
-          <AutoFlipCard feat={f} isActive={i === index} />
-        </div>
-      ))}
+    <div style={{ position: "relative", width: "100%", height: 380, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", marginTop: 24, marginBottom: 24 }}>
+      <div style={{ position: "relative", width: "100%", flex: 1, display: "flex", alignItems: "center", justifyContent: "center", minHeight: 0 }}>
+        {DOPETWIN_FEATURES.map((feat, idx) => {
+          let offset = idx - activeIdx;
+          if (offset > 2) offset -= DOPETWIN_FEATURES.length;
+          if (offset < -2) offset += DOPETWIN_FEATURES.length;
+          const isActive = offset === 0;
+          const absOffset = Math.abs(offset);
+          
+          const xPercent = isActive ? 0 : Math.sign(offset) * (absOffset === 1 ? 85 : 155);
+
+          return (
+            <motion.div
+              key={feat.title}
+              onClick={() => setActiveIdx(idx)}
+              initial={false}
+              animate={{
+                x: `calc(-50% + ${xPercent}%)`,
+                y: "-50%",
+                scale: isActive ? 1.05 : 1 - absOffset * 0.15,
+                zIndex: isActive ? 10 : 10 - absOffset,
+                opacity: absOffset > 2 ? 0 : 1,
+              }}
+              transition={{ type: "tween", duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                width: "min(55%, 220px)",
+                aspectRatio: "2/3",
+                background: "var(--background)",
+                overflow: "hidden",
+                cursor: "pointer",
+              }}
+            >
+              <AutoFlipCard feat={feat} isActive={isActive} />
+            </motion.div>
+          );
+        })}
+      </div>
+      
+      <div style={{ display: "flex", gap: 10, marginTop: 20, zIndex: 30 }}>
+        {DOPETWIN_FEATURES.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setActiveIdx(idx)}
+            style={{
+              width: 10, height: 10, borderRadius: "50%",
+              background: idx === activeIdx ? "var(--primary)" : "var(--ink)",
+              opacity: idx === activeIdx ? 1 : 0.25,
+              border: idx === activeIdx ? "1px solid var(--ink)" : "none",
+              padding: 0, cursor: "pointer", transition: "all 0.3s ease"
+            }}
+            aria-label={`Go to slide ${idx + 1}`}
+          />
+        ))}
+      </div>
     </div>
   );
 }
@@ -63,13 +115,14 @@ function AutoFlipCard({ feat, isActive }: { feat: any, isActive: boolean }) {
   }, [isActive]);
 
   return (
-    <div style={{ position: "relative", width: "100%", height: "100%" }}>
+    <div style={{ position: "relative", width: "100%", height: "100%", border: "1px solid var(--ink)" }}>
       <div style={{ position: "absolute", inset: 0, opacity: showHover ? 0 : 1, transition: "opacity 0.3s" }}>
          <FeatureFace src={feat.img} title={feat.title} />
       </div>
       <div style={{ position: "absolute", inset: 0, opacity: showHover ? 1 : 0, transition: "opacity 0.3s" }}>
          <FeatureFace src={feat.hoverImg} title={feat.title} />
       </div>
+      {!isActive && <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.5)", transition: "background 0.3s" }} />}
     </div>
   )
 }

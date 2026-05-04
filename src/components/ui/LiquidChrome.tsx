@@ -18,13 +18,15 @@ export const LiquidChrome = ({
     if (!containerRef.current) return;
 
     const container = containerRef.current;
-    let renderer;
-    try {
-      renderer = new Renderer({ antialias: true, alpha: true });
-    } catch (error) {
-      console.warn("WebGL not supported or context creation failed.", error);
+    
+    const canvas = document.createElement('canvas');
+    const glContext = canvas.getContext('webgl2') || canvas.getContext('webgl');
+    if (!glContext) {
+      console.warn("WebGL not supported, skipping LiquidChrome.");
       return;
     }
+    
+    const renderer = new Renderer({ canvas, antialias: true, alpha: true });
     const gl = renderer.gl;
     // Transparent background
     gl.clearColor(0, 0, 0, 0);
