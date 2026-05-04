@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrambledText } from "@/components/kinetic/ScrambledText";
@@ -27,6 +27,51 @@ function FeatureFace({ src, title }: { src: string; title: string }) {
       </div>
     </div>
   );
+}
+
+function MobileCreatorSlideshow() {
+  const [index, setIndex] = useState(0);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % DOPETWIN_FEATURES.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div style={{ aspectRatio: "2/3", width: "100%", maxWidth: 300, margin: "0 auto", position: "relative" }}>
+      {DOPETWIN_FEATURES.map((f, i) => (
+        <div key={f.title} style={{ position: "absolute", inset: 0, opacity: i === index ? 1 : 0, transition: "opacity 0.5s ease-in-out" }}>
+          <AutoFlipCard feat={f} isActive={i === index} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function AutoFlipCard({ feat, isActive }: { feat: any, isActive: boolean }) {
+  const [showHover, setShowHover] = useState(false);
+  
+  useEffect(() => {
+    if (isActive) {
+      const timer = setTimeout(() => setShowHover(true), 1250);
+      return () => clearTimeout(timer);
+    } else {
+      setShowHover(false);
+    }
+  }, [isActive]);
+
+  return (
+    <div style={{ position: "relative", width: "100%", height: "100%" }}>
+      <div style={{ position: "absolute", inset: 0, opacity: showHover ? 0 : 1, transition: "opacity 0.3s" }}>
+         <FeatureFace src={feat.img} title={feat.title} />
+      </div>
+      <div style={{ position: "absolute", inset: 0, opacity: showHover ? 1 : 0, transition: "opacity 0.3s" }}>
+         <FeatureFace src={feat.hoverImg} title={feat.title} />
+      </div>
+    </div>
+  )
 }
 
 export function Product() {
@@ -79,7 +124,7 @@ export function Product() {
             <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: "var(--primary)", pointerEvents: "none" }} />
             <div className="eco-card" style={{ opacity: 0, padding: 40, display: "flex", flexDirection: "column", gap: 24 }}>
               <h4 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.8rem, 3.5vw, 3rem)", color: "var(--ink)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1 }}>
-                For Companion Seekers
+                For Everyone
               </h4>
               <div style={{ 
                 overflow: "hidden", 
@@ -108,9 +153,8 @@ export function Product() {
                 For Creator Revenue
               </h4>
               <div
-                className="creator-grid"
+                className="hidden md:grid creator-grid"
                 style={{
-                  display: "grid",
                   gridTemplateColumns: "repeat(5, 1fr)",
                   gap: 12,
                 }}
@@ -123,6 +167,9 @@ export function Product() {
                     />
                   </div>
                 ))}
+              </div>
+              <div className="block md:hidden w-full py-4">
+                <MobileCreatorSlideshow />
               </div>
               <div className="eco-footer-row" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 32, flexWrap: "wrap", marginTop: 16 }}>
                 <p style={{ fontSize: 15, fontFamily: "var(--font-body)", color: "var(--ink-soft)", lineHeight: 1.75, flex: 1, fontWeight: 300, margin: 0, minWidth: 240 }}>
