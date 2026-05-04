@@ -20,7 +20,7 @@ export function Ecosystem() {
             </span>
           </div>
           
-          <div className="flex flex-row justify-between items-center w-full gap-4">
+          <div className="flex flex-row justify-between items-start w-full gap-4">
             <div className="reveal flex flex-col">
               <ScrambledText as="h2" className="h-section leading-none m-0" text="Who's already" />
               <ScrambledText as="h2" className="h-section leading-none m-0 -mt-2 md:-mt-4" text="building on it." />
