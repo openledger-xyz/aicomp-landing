@@ -40,7 +40,7 @@ export function Ecosystem() {
           </div>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-14">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-14 lg:-mt-24 relative z-20">
           {items.map((it) => (
             <div
               key={it.t}
