@@ -19,19 +19,19 @@ export function Ecosystem() {
               ECOSYSTEM
             </span>
           </div>
-          
+
           <div className="flex flex-row justify-between items-start w-full gap-4">
             <div className="reveal flex flex-col">
               <ScrambledText as="h2" className="h-section leading-none m-0" text="Who's already" />
               <ScrambledText as="h2" className="h-section leading-none m-0" text="building on it." />
             </div>
-            
-            <div className="flex items-center justify-center reveal relative z-30 shrink-0 lg:-translate-y-8" style={{ transform: "translateY(0.5rem)" }}>
-              <video 
-                autoPlay 
-                loop 
-                muted 
-                playsInline 
+
+            <div className="flex items-center justify-center reveal relative z-30 shrink-0 lg:-translate-y-16 sm:-translate-y-8" style={{ transform: "translateY(0.5rem)" }}>
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
                 className="w-48 sm:w-56 md:w-56 lg:w-64 h-auto object-contain pointer-events-none"
               >
                 <source src="/Photo.mp4" type="video/mp4" />
