@@ -67,7 +67,7 @@ export default function CoverflowGallery() {
                 <img src={card.img} alt={card.text} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                 <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "60%", background: "linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%)", pointerEvents: "none" }} />
                 {!isActive && <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.5)", transition: "background 0.3s" }} />}
-                <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "20px 16px", fontFamily: "var(--font-body)", fontSize: 13, fontWeight: 600, color: "#fff", textAlign: "left", lineHeight: 1.4, textShadow: "0px 2px 4px rgba(0,0,0,0.8)", opacity: isActive ? 1 : 0, transition: "opacity 0.3s" }}>
+                <div style={{ position: "absolute", bottom: 10, left: 0, right: 0, padding: "0 16px", fontFamily: "var(--font-body)", fontSize: 13, fontWeight: 600, color: "#fff", textAlign: "left", lineHeight: 1.4, textShadow: "0px 2px 4px rgba(0,0,0,0.8)", opacity: isActive ? 1 : 0, transition: "opacity 0.3s" }}>
                   {card.text}
                 </div>
               </div>
@@ -75,24 +75,7 @@ export default function CoverflowGallery() {
           );
         })}
       </div>
-      
-      {/* Navigation Dots */}
-      <div style={{ display: "flex", gap: 10, marginTop: 20, zIndex: 30 }}>
-        {CARDS.map((card, idx) => (
-          <button
-            key={card.id}
-            onClick={() => setActiveIdx(idx)}
-            style={{
-              width: 10, height: 10, borderRadius: "50%",
-              background: idx === activeIdx ? "var(--primary)" : "var(--ink)",
-              opacity: idx === activeIdx ? 1 : 0.25,
-              border: idx === activeIdx ? "1px solid var(--ink)" : "none",
-              padding: 0, cursor: "pointer", transition: "all 0.3s ease"
-            }}
-            aria-label={`Go to slide ${idx + 1}`}
-          />
-        ))}
-      </div>
+
     </div>
   );
 }

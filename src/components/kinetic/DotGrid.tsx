@@ -92,14 +92,24 @@ export function DotGrid({ className, color = "255, 231, 1" }: { className?: stri
       raf = requestAnimationFrame(tick);
     };
 
-    resize();
+    // Delay initial resize to let layout settle (especially on mobile)
+    setTimeout(resize, 100);
     tick();
+
+    // Use ResizeObserver to track parent size changes
+    const parent = canvas.parentElement;
+    let ro: ResizeObserver | null = null;
+    if (parent) {
+      ro = new ResizeObserver(() => resize());
+      ro.observe(parent);
+    }
     window.addEventListener("resize", resize);
     window.addEventListener("mousemove", onMove);
     canvas.addEventListener("mouseleave", onLeave);
     canvas.addEventListener("click", onClick);
     return () => {
       cancelAnimationFrame(raf);
+      ro?.disconnect();
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", onMove);
       canvas.removeEventListener("mouseleave", onLeave);

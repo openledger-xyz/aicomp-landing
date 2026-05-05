@@ -23,7 +23,7 @@ function FeatureFace({ src, title }: { src: string; title: string }) {
     <div style={{ width: "100%", height: "100%", position: "relative", border: "1px solid var(--ink)" }}>
       <img src={src} alt={title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
       <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "80%", background: "linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%)", pointerEvents: "none" }} />
-      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "12px 6px", fontFamily: "var(--font-heading)", fontSize: 10, fontWeight: 800, textTransform: "uppercase", color: "#fff", textAlign: "center", textShadow: "0px 2px 4px rgba(0,0,0,0.8)" }}>
+      <div style={{ position: "absolute", bottom: 10, left: 0, right: 0, padding: "0 6px", fontFamily: "var(--font-heading)", fontSize: 10, fontWeight: 800, textTransform: "uppercase", color: "#fff", textAlign: "center", textShadow: "0px 2px 4px rgba(0,0,0,0.8)" }}>
         {title}
       </div>
     </div>
@@ -92,22 +92,7 @@ function MobileCreatorSlideshow() {
         })}
       </div>
       
-      <div style={{ display: "flex", gap: 10, marginTop: 20, zIndex: 30 }}>
-        {DOPETWIN_FEATURES.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => setActiveIdx(idx)}
-            style={{
-              width: 10, height: 10, borderRadius: "50%",
-              background: idx === activeIdx ? "var(--primary)" : "var(--ink)",
-              opacity: idx === activeIdx ? 1 : 0.25,
-              border: idx === activeIdx ? "1px solid var(--ink)" : "none",
-              padding: 0, cursor: "pointer", transition: "all 0.3s ease"
-            }}
-            aria-label={`Go to slide ${idx + 1}`}
-          />
-        ))}
-      </div>
+
     </div>
   );
 }
