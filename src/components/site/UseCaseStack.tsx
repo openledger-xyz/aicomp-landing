@@ -128,7 +128,7 @@ export const UseCaseStack = () => {
   });
 
   return (
-    <ReactLenis root options={{ syncTouch: false, touchMultiplier: 0 }}>
+    <ReactLenis root>
       <div
         ref={container}
         className="relative flex w-full flex-col items-center justify-center pt-[5vh] pb-[5vh]"
