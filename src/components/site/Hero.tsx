@@ -69,7 +69,7 @@ export function Hero() {
 
         {/* RIGHT — Hero banner image */}
         <div
-          className="reveal relative w-full flex items-center justify-center pt-16 pb-12 sm:px-4 md:pt-32 md:pb-20 lg:px-0 lg:pt-0 lg:pb-0 min-h-[400px] lg:min-h-[600px] overflow-hidden"
+          className="reveal relative w-full flex items-center justify-center pt-16 pb-12 sm:px-4 md:pt-32 md:pb-20 lg:px-0 lg:pt-0 lg:pb-0 min-h-[400px] lg:min-h-[600px]"
         >
           <div className="relative w-[110%] max-w-[110%] lg:-translate-x-[8%] lg:scale-105 translate-y-8 lg:translate-y-16">
             {/* CUBES BACKGROUND */}
