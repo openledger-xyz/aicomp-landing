@@ -23,10 +23,6 @@ export function WhatIs() {
         y: 0, opacity: 1, duration: 0.6,
         scrollTrigger: { trigger: sectionRef.current, start: "top 75%", once: true },
       });
-      gsap.fromTo(".wid-card", { y: 30, opacity: 0 }, {
-        y: 0, opacity: 1, stagger: 0.1, duration: 0.5, ease: "power3.out",
-        scrollTrigger: { trigger: ".wid-grid", start: "top 80%", once: true },
-      });
 
     }, sectionRef);
     return () => ctx.revert();

@@ -79,12 +79,14 @@ export const Route = createRootRoute({
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="overflow-x-hidden">
       <head>
         <HeadContent />
       </head>
-      <body>
-        {children}
+      <body className="overflow-x-hidden relative w-full m-0 p-0">
+        <div className="overflow-x-hidden w-full relative m-0 p-0">
+          {children}
+        </div>
         <Scripts />
       </body>
     </html>

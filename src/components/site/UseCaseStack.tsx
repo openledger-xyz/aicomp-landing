@@ -65,7 +65,7 @@ const StickyCard = ({
   return (
     <div
       ref={container}
-      className="sticky top-0 flex items-center justify-center w-full h-screen"
+      className="sticky top-0 flex items-center justify-center w-full h-[100dvh]"
     >
       <motion.div
         style={{
@@ -128,7 +128,7 @@ export const UseCaseStack = () => {
   });
 
   return (
-    <ReactLenis root>
+    <ReactLenis root options={{ syncTouch: false, touchMultiplier: 0 }}>
       <div
         ref={container}
         className="relative flex w-full flex-col items-center justify-center pt-[5vh] pb-[5vh]"
