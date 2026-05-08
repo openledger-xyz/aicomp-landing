@@ -53,7 +53,7 @@ export function FinalCTA() {
           {/* Right — Mr. Dope hamster image */}
           <div className="shrink-0 relative">
             <img
-              src="/tape.png"
+              src="/tape-Winking-Face.png"
               alt="Mr. Dope mascot"
               className="w-72 sm:w-80 md:w-88 lg:w-96 h-auto object-contain pointer-events-none drop-shadow-xl"
             />
