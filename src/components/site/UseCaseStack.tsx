@@ -9,7 +9,7 @@ import serviceImg from "@/assets/usecases/service.png";
 
 const useCases = [
   {
-    title: "Companion Application",
+    title: "Companion Applications",
     desc: "Dopamint gives companions the one thing they've always lacked, continuity. Same personality, same memory, same presence. Every session feels like it never ended.",
     icon: "favorite",
     src: mentalImg,
@@ -65,7 +65,7 @@ const StickyCard = ({
   return (
     <div
       ref={container}
-      className="sticky top-0 flex items-center justify-center w-full h-[100dvh]"
+      className="sticky top-0 flex items-center justify-center w-full h-[85dvh] lg:h-[100dvh]"
     >
       <motion.div
         style={{
@@ -131,7 +131,7 @@ export const UseCaseStack = () => {
     <ReactLenis root>
       <div
         ref={container}
-        className="relative flex w-full flex-col items-center justify-center pt-[5vh] pb-[5vh]"
+        className="relative flex w-full flex-col items-center justify-center lg:pt-[5vh] lg:pb-[5vh]"
       >
         {useCases.map((useCase, i) => {
           const targetScale = Math.max(

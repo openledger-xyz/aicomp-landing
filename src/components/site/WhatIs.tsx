@@ -29,9 +29,9 @@ export function WhatIs() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="what" style={{ background: "var(--background)", padding: "96px 0", borderBottom: "1px solid var(--ink)" }}>
+    <section ref={sectionRef} id="what" className="py-12 lg:py-24" style={{ background: "var(--background)", borderBottom: "1px solid var(--ink)" }}>
       <div className="container-x">
-        <div className="wid-header grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start" style={{ opacity: 0, marginBottom: 56 }}>
+        <div className="wid-header grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start mb-8 lg:mb-14" style={{ opacity: 0 }}>
           <div>
             <span className="section-label mb-6">
               <span className="material-symbols-outlined">help_center</span>
@@ -73,7 +73,7 @@ export function WhatIs() {
         </div>
 
         {/* Use Case Cards Stack */}
-        <div style={{ marginBottom: 64 }}>
+        <div className="mb-0 lg:mb-16">
           <UseCaseStack />
         </div>
 

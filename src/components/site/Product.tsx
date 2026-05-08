@@ -2,125 +2,20 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrambledText } from "@/components/kinetic/ScrambledText";
-import CoverflowGallery from "./CoverflowGallery";
-import HoverFlipCard from "./HoverFlipCard";
+import CoverflowGallery, { CoverflowCardItem } from "./CoverflowGallery";
 import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
 
-const DOPETWIN_FEATURES = [
-  { title: "Shannon Elizabeth", img: `${basePath}/dopekin_avatars/ShannonElizabeth.png`, hoverImg: `${basePath}/dopekin_avatars/ShannonElizabeth_Hover.png` },
-  { title: "Blac Chyna", img: `${basePath}/dopekin_avatars/BlacChyna.png`, hoverImg: `${basePath}/dopekin_avatars/BlacChyna_Hover.png` },
-  { title: "Bhad Bhabie", img: `${basePath}/dopekin_avatars/BhadBhabie.png`, hoverImg: `${basePath}/dopekin_avatars/BhadBhabie_Hover.png` },
-  { title: "Cardi B", img: `${basePath}/dopekin_avatars/CardiB.png`, hoverImg: `${basePath}/dopekin_avatars/CardiB_Hover.png` },
-  { title: "Iggy Azalea", img: `${basePath}/dopekin_avatars/IggyAzalea.png`, hoverImg: `${basePath}/dopekin_avatars/IggyAzalea_Hover.png` },
+const CREATOR_CARDS: CoverflowCardItem[] = [
+  { id: 0, img: `${basePath}/creator_avatars/Creator1.png` },
+  { id: 1, img: `${basePath}/creator_avatars/Creator2.png` },
+  { id: 2, img: `${basePath}/creator_avatars/Creator3.png` },
+  { id: 3, img: `${basePath}/creator_avatars/Creator4.png` },
+  { id: 4, img: `${basePath}/creator_avatars/Creator5.png` },
 ];
-
-function FeatureFace({ src, title }: { src: string; title: string }) {
-  return (
-    <div style={{ width: "100%", height: "100%", position: "relative", border: "1px solid var(--ink)" }}>
-      <img src={src} alt={title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "80%", background: "linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%)", pointerEvents: "none" }} />
-      <div style={{ position: "absolute", bottom: 10, left: 0, right: 0, padding: "0 6px", fontFamily: "var(--font-heading)", fontSize: 10, fontWeight: 800, textTransform: "uppercase", color: "#fff", textAlign: "center", textShadow: "0px 2px 4px rgba(0,0,0,0.8)" }}>
-        {title}
-      </div>
-    </div>
-  );
-}
-
-function MobileCreatorSlideshow() {
-  const [activeIdx, setActiveIdx] = useState(2);
-  
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIdx((prev) => (prev + 1) % DOPETWIN_FEATURES.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div style={{ 
-      position: "relative", 
-      width: "100%", 
-      height: "clamp(420px, 70vw, 600px)", 
-      display: "flex", 
-      flexDirection: "column", 
-      alignItems: "center", 
-      justifyContent: "center",
-      WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
-      maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)"
-    }}>
-      <div style={{ position: "relative", width: "100%", flex: 1, display: "flex", alignItems: "center", justifyContent: "center", minHeight: 0 }}>
-        {DOPETWIN_FEATURES.map((feat, idx) => {
-          let offset = idx - activeIdx;
-          if (offset > 2) offset -= DOPETWIN_FEATURES.length;
-          if (offset < -2) offset += DOPETWIN_FEATURES.length;
-          const isActive = offset === 0;
-          const absOffset = Math.abs(offset);
-          
-          const xPercent = isActive ? 0 : Math.sign(offset) * (absOffset === 1 ? 85 : 155);
-
-          return (
-            <motion.div
-              key={feat.title}
-              onClick={() => setActiveIdx(idx)}
-              initial={false}
-              animate={{
-                x: `calc(-50% + ${xPercent}%)`,
-                y: "-50%",
-                scale: isActive ? 1.05 : 1 - absOffset * 0.15,
-                zIndex: isActive ? 10 : 10 - absOffset,
-                opacity: absOffset > 2 ? 0 : 1,
-              }}
-              transition={{ type: "tween", duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-              style={{
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                width: "min(72%, 340px)",
-                aspectRatio: "3/5",
-                background: "var(--background)",
-                overflow: "hidden",
-                cursor: "pointer",
-              }}
-            >
-              <AutoFlipCard feat={feat} isActive={isActive} />
-            </motion.div>
-          );
-        })}
-      </div>
-      
-
-    </div>
-  );
-}
-
-function AutoFlipCard({ feat, isActive }: { feat: any, isActive: boolean }) {
-  const [showHover, setShowHover] = useState(false);
-  
-  useEffect(() => {
-    if (isActive) {
-      const timer = setTimeout(() => setShowHover(true), 1250);
-      return () => clearTimeout(timer);
-    } else {
-      setShowHover(false);
-    }
-  }, [isActive]);
-
-  return (
-    <div style={{ position: "relative", width: "100%", height: "100%", border: "1px solid var(--ink)" }}>
-      <div style={{ position: "absolute", inset: 0, opacity: showHover ? 0 : 1, transition: "opacity 0.3s" }}>
-         <FeatureFace src={feat.img} title={feat.title} />
-      </div>
-      <div style={{ position: "absolute", inset: 0, opacity: showHover ? 1 : 0, transition: "opacity 0.3s" }}>
-         <FeatureFace src={feat.hoverImg} title={feat.title} />
-      </div>
-      {!isActive && <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.5)", transition: "background 0.3s" }} />}
-    </div>
-  )
-}
 
 export function Product() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -200,24 +95,13 @@ export function Product() {
               <h4 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.8rem, 3.5vw, 3rem)", color: "var(--ink)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1 }}>
                 For Creator Revenue
               </h4>
-              <div
-                className="hidden md:grid creator-grid"
-                style={{
-                  gridTemplateColumns: "repeat(5, 1fr)",
-                  gap: 12,
-                }}
-              >
-                {DOPETWIN_FEATURES.map((feat) => (
-                  <div key={feat.title} style={{ aspectRatio: "2/3", width: "100%" }}>
-                    <HoverFlipCard
-                      firstContent={<FeatureFace src={feat.img} title={feat.title} />}
-                      secondContent={<FeatureFace src={feat.hoverImg} title={feat.title} />}
-                    />
-                  </div>
-                ))}
-              </div>
-              <div className="block md:hidden w-full py-4">
-                <MobileCreatorSlideshow />
+              <div style={{ 
+                overflow: "hidden", 
+                height: "clamp(420px, 70vw, 600px)",
+                WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
+                maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)"
+              }}>
+                <CoverflowGallery cards={CREATOR_CARDS} disableHover />
               </div>
               <div className="eco-footer-row" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 32, flexWrap: "wrap", marginTop: 16 }}>
                 <p style={{ fontSize: 15, fontFamily: "var(--font-body)", color: "var(--ink-soft)", lineHeight: 1.75, flex: 1, fontWeight: 300, margin: 0, minWidth: 240 }}>
