@@ -65,7 +65,7 @@ const StickyCard = ({
   return (
     <div
       ref={container}
-      className="sticky top-0 flex items-center justify-center w-full h-[85dvh] lg:h-[100dvh]"
+      className="sticky top-0 flex items-center justify-center w-full h-[85dvh] lg:h-dvh"
     >
       <motion.div
         style={{

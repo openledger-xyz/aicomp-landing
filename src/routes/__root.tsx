@@ -24,6 +24,8 @@ function NotFoundComponent() {
   );
 }
 
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [
@@ -46,7 +48,7 @@ export const Route = createRootRoute({
       {
         rel: "icon",
         type: "image/png",
-        href: "/Dopemint2/favicon.png",
+        href: `${basePath}/favicon.png`,
       },
       {
         rel: "preconnect",
