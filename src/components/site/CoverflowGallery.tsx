@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactNode } from "react";
 import { motion } from "framer-motion";
 
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
@@ -6,7 +6,7 @@ const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
 export type CoverflowCardItem = {
   id: number;
   img: string;
-  text?: string;
+  text?: ReactNode;
 };
 
 const DEFAULT_CARDS: CoverflowCardItem[] = [

@@ -10,11 +10,11 @@ gsap.registerPlugin(ScrollTrigger);
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 const CREATOR_CARDS: CoverflowCardItem[] = [
-  { id: 0, img: `${basePath}/creator_avatars/Creator1.png` },
-  { id: 1, img: `${basePath}/creator_avatars/Creator2.png` },
-  { id: 2, img: `${basePath}/creator_avatars/Creator3.png` },
-  { id: 3, img: `${basePath}/creator_avatars/Creator4.png` },
-  { id: 4, img: `${basePath}/creator_avatars/Creator5.png` },
+  { id: 0, img: `${basePath}/creator_avatars/Creator1.png`, text: <><span style={{ fontWeight: 900, fontSize: 16 }}>Sean</span><br/>Actress</> },
+  { id: 1, img: `${basePath}/creator_avatars/Creator2.png`, text: <><span style={{ fontWeight: 900, fontSize: 16 }}>Gia</span><br/>Television host</> },
+  { id: 2, img: `${basePath}/creator_avatars/Creator3.png`, text: <><span style={{ fontWeight: 900, fontSize: 16 }}>Dex</span><br/>Actor</> },
+  { id: 3, img: `${basePath}/creator_avatars/Creator4.png`, text: <><span style={{ fontWeight: 900, fontSize: 16 }}>Iris</span><br/>Singer</> },
+  { id: 4, img: `${basePath}/creator_avatars/Creator5.png`, text: <><span style={{ fontWeight: 900, fontSize: 16 }}>Max</span><br/>Founder</> },
 ];
 
 export function Product() {
