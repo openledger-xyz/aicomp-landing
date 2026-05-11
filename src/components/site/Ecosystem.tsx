@@ -34,7 +34,10 @@ export function Ecosystem() {
                 playsInline
                 className="w-48 sm:w-56 md:w-56 lg:w-64 h-auto object-contain pointer-events-none"
               >
-                <source src="/Photo.mp4" type="video/mp4" />
+                {/* Safari / iOS / macOS (HEVC) */}
+                <source src="/Photo-hevc.mp4" type='video/mp4; codecs="hvc1"' />
+                {/* Chrome / Edge / Firefox / Android / Windows / Linux (VP9) */}
+                <source src="/Photo-vp9.webm" type="video/webm" />
               </video>
             </div>
           </div>

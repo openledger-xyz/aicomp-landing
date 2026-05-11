@@ -39,3 +39,8 @@ dist-ssr
 *.psd
 *.mp4
 !public/*.mp4
+
+# Large source video/app folders
+New Ivdeo/
+*.exe
+*.asar

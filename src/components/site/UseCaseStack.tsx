@@ -78,19 +78,23 @@ const StickyCard = ({
         className="relative flex flex-col md:flex-row w-full max-w-[90%] md:max-w-5xl h-[460px] md:h-[480px] origin-top overflow-hidden"
       >
         {isOutro ? (
-          <div className="relative w-full h-full flex items-center justify-center p-8 md:p-14 bg-primary text-ink overflow-hidden">
+          <div className="relative w-full h-full flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 p-8 md:p-14 bg-primary text-ink overflow-hidden">
+            <h3 className="relative z-10" style={{ fontFamily: "var(--font-heading)", fontWeight: 800, fontSize: "clamp(2rem, 5vw, 4rem)", letterSpacing: "-0.02em", lineHeight: 1.1, textAlign: "left" }}>
+              And so many<br />Moreeee......
+            </h3>
             <video
               autoPlay
               loop
               muted
               playsInline
-              className="absolute bottom-0 left-4 md:left-8 w-40 md:w-56 h-auto object-contain z-0 pointer-events-none"
+              preload="auto"
+              className="relative z-0 w-40 md:w-56 h-auto object-contain pointer-events-none shrink-0"
             >
-              <source src="/juggling-loop.mp4" type="video/mp4" />
+              {/* Safari / iOS / macOS (HEVC) */}
+              <source src="/juggling-hevc.mp4" type='video/mp4; codecs="hvc1"' />
+              {/* Chrome / Edge / Firefox / Android / Windows / Linux (VP9) */}
+              <source src="/juggling-vp9.webm" type="video/webm" />
             </video>
-            <h3 className="relative z-10" style={{ fontFamily: "var(--font-heading)", fontWeight: 800, fontSize: "clamp(2rem, 5vw, 4rem)", letterSpacing: "-0.02em", lineHeight: 1, textAlign: "center" }}>
-              {title}
-            </h3>
           </div>
         ) : (
           <>

@@ -79,6 +79,8 @@ export const Route = createRootRoute({
   notFoundComponent: NotFoundComponent,
 });
 
+import { LoadingScreen } from "../components/site/LoadingScreen";
+
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="overflow-x-clip">
@@ -86,6 +88,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body className="overflow-x-clip relative w-full m-0 p-0">
+        <LoadingScreen />
         <div className="overflow-x-clip w-full relative m-0 p-0">
           {children}
         </div>

@@ -113,12 +113,13 @@ export function Hero() {
               loop
               muted
               playsInline
+              preload="auto"
               className="relative z-10 w-full h-auto pointer-events-none"
               style={{
                 objectFit: "contain",
                 objectPosition: "center",
                 display: "block",
-                transform: "scale(1.25) translateY(2%)",
+                transform: "scale(1.15) translateY(2%)",
               }}
             >
               {/* Safari / iOS / macOS (HEVC with Alpha) */}
