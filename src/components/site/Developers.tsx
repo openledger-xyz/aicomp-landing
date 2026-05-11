@@ -85,7 +85,7 @@ export function Developers() {
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
             <a href="#testnet" className="btn btn-primary">
-              Get API
+              Join Waitlist
               <span className="material-symbols-outlined" style={{ fontSize: 16, marginLeft: 6 }}>arrow_forward</span>
             </a>
             <a href="#" className="btn btn-outline inline-flex items-center gap-1" style={{ fontSize: 12, letterSpacing: "0.08em" }}>Read Docs <span className="material-symbols-outlined" style={{ fontSize: 14 }}>arrow_forward</span></a>

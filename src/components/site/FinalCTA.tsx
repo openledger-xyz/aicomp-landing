@@ -44,7 +44,7 @@ export function FinalCTA() {
 
             {/* CTA */}
             <a href="#testnet" className="btn btn-primary inline-flex items-center gap-2">
-              Get API
+              Join Waitlist
               <span className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_forward</span>
             </a>
 

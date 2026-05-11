@@ -62,7 +62,7 @@ export function Hero() {
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">
-            <a href="#testnet" className="btn btn-primary inline-flex items-center gap-2">Get API <span className="material-symbols-outlined" style={{ fontSize: 18 }}>arrow_forward</span></a>
+            <a href="#testnet" className="btn btn-primary inline-flex items-center gap-2">Join Waitlist <span className="material-symbols-outlined" style={{ fontSize: 18 }}>arrow_forward</span></a>
             <a href="#product" className="btn btn-outline">Join Testnet</a>
           </div>
         </div>

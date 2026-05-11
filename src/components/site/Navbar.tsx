@@ -135,7 +135,7 @@ export function Navbar() {
             );
           })}
           <a href="#testnet" onClick={() => setOpen(false)} className="btn btn-primary mt-4">
-            Get API
+            Join Waitlist
           </a>
         </nav>
       </div>
