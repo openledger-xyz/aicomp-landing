@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useScramble } from "@/hooks/use-kinetic";
+import { useRef, useEffect } from "react";
 
 import Cubes from "@/components/ui/Cubes";
 import LiquidChrome from "@/components/ui/LiquidChrome";
@@ -8,6 +9,43 @@ export function Hero() {
   const refLine1 = useScramble<HTMLSpanElement>("Real-time");
   const refLine2 = useScramble<HTMLSpanElement>("Infra for");
   const refLine3 = useScramble<HTMLSpanElement>("AI Companions.");
+
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    let frameId: number;
+    const loopCheck = () => {
+      // If the video has a blank trailing second or decode stall, we skip the last 0.5s.
+      // Adjust the 0.5 value if you need to cut off more or less of the vanishing part.
+      if (video.duration && video.currentTime >= video.duration - 0.5) {
+        video.currentTime = 0.05;
+        video.play().catch(() => {});
+      }
+      frameId = requestAnimationFrame(loopCheck);
+    };
+
+    const onPlay = () => {
+      frameId = requestAnimationFrame(loopCheck);
+    };
+    const onPause = () => {
+      cancelAnimationFrame(frameId);
+    };
+
+    video.addEventListener("play", onPlay);
+    video.addEventListener("pause", onPause);
+
+    // If already playing via autoplay
+    if (!video.paused) onPlay();
+
+    return () => {
+      cancelAnimationFrame(frameId);
+      video.removeEventListener("play", onPlay);
+      video.removeEventListener("pause", onPause);
+    };
+  }, []);
   return (
     <section className="relative overflow-hidden" style={{ borderBottom: "1px solid var(--ink)" }}>
       <div className="container-x grid lg:grid-cols-2 gap-12 lg:gap-24 pt-10 lg:pt-4 pb-16 lg:pb-24 items-center">
@@ -109,8 +147,8 @@ export function Hero() {
             </div>
             
             <video
+              ref={videoRef}
               autoPlay
-              loop
               muted
               playsInline
               preload="auto"
