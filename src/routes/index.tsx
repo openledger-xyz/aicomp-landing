@@ -43,7 +43,7 @@ function Index() {
       <Runtime />
       <Ecosystem />
       <Developers />
-      <Pricing />
+      {/* <Pricing /> */}
       <Testnet />
       <FinalCTA />
       <Footer />
