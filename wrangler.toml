@@ -1,0 +1,9 @@
+name = "dopamint-xyz"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+# VITE_* env vars are baked in at build time.
+# Set runtime vars here for `wrangler dev`, or in the Workers dashboard for production.
+# [vars]
+# VITE_WAITLIST_SUBSCRIBER_FORM = "https://..."
+# VITE_WAITLIST_FORM_ENTRY = "entry.XXXXXXXXX"

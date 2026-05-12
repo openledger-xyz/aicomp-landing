@@ -37,12 +37,12 @@ export const Route = createRootRoute({
       { property: "og:title", content: "dopamint" },
       { property: "og:description", content: "Dopamint Companion Core provides real-time AI companion infrastructure for building emotionally intelligent products." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@dopamint" },
       { name: "twitter:title", content: "dopamint" },
       { name: "twitter:description", content: "Dopamint Companion Core provides real-time AI companion infrastructure for building emotionally intelligent products." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e8b11223-8ff1-4ab3-b3f2-981eaeb5668c/id-preview-8ee1490c--e1c8dbdf-0208-41e7-8d8b-90e1405d9629.lovable.app-1776867178781.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e8b11223-8ff1-4ab3-b3f2-981eaeb5668c/id-preview-8ee1490c--e1c8dbdf-0208-41e7-8d8b-90e1405d9629.lovable.app-1776867178781.png" },
+      { property: "og:image", content: `${basePath}/og-image.png` },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: `${basePath}/og-image.png` },
     ],
     links: [
       {

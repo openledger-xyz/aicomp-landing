@@ -19,7 +19,6 @@ export function Hero() {
           <span className="section-label" style={{ marginBottom: 8, display: "inline-flex" }}>
             POWERED BY $DOPE
           </span>
-
           <h1
             className="mt-2 lg:mt-0"
             style={{

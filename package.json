@@ -11,7 +11,8 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "predeploy": "vite build",
-    "deploy": "gh-pages -d dist/client"
+    "deploy": "wrangler deploy dist/server/server.js --assets dist/client",
+    "deploy:preview": "wrangler deploy dist/server/server.js --assets dist/client --env preview"
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "^1.25.5",
