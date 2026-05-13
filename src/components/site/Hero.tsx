@@ -146,7 +146,7 @@ export function Hero() {
               }}
             >
               {/* HEVC (H.265) with alpha for Safari */}
-              <source src="/Banner_H265.mov" type='video/quicktime; codecs="hvc1"' />
+              <source src="/Banner-webm.mp4" type='video/quicktime; codecs="hvc1"' />
               {/* VP9 with alpha for Chrome/Firefox/Android */}
               <source src="/Banner-webm.webm" type="video/webm" />
             </video>

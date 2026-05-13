@@ -38,12 +38,12 @@ export const Route = createRootRoute({
       { property: "og:title", content: "Real-time infra layer for AI companions." },
       { property: "og:description", content: "Dopamint is real-time infrastructure for AI companions powering live voice, persistent identity, multimodal generation, and physical Ai embodiment." },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: `${basePath}/og-image.png` },
+      { property: "og:image", content: "https://cdn.dopamint.xyz/Landing/og-image.png" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@dopamint" },
       { name: "twitter:title", content: "Real-time infra layer for AI companions." },
       { name: "twitter:description", content: "Dopamint is real-time infrastructure for AI companions powering live voice, persistent identity, multimodal generation, and physical Ai embodiment." },
-      { name: "twitter:image", content: `${basePath}/og-image.png` },
+      { name: "twitter:image", content: "https://cdn.dopamint.xyz/Landing/og-image.png" },
     ],
     links: [
       {
