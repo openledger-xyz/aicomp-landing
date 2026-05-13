@@ -44,19 +44,16 @@ export function WhatIs() {
 
             <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 24 }}>
               {["API", "No-code", "Chat Now"].map((b) => (
-                <a href="#testnet" key={b} style={{
+                <span key={b} style={{
                   padding: "5px 14px", background: "var(--primary)", border: "1px solid var(--ink)",
                   fontFamily: "var(--font-body)", fontSize: 11, fontWeight: 700, color: "var(--ink)",
-                  textTransform: "uppercase", letterSpacing: "0.08em", textDecoration: "none",
-                  transition: "transform 0.15s ease", display: "inline-block"
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-2px)")}
-                onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
-                >
+                  textTransform: "uppercase", letterSpacing: "0.08em", display: "inline-block"
+                }}>
                   {b}
-                </a>
+                </span>
               ))}
             </div>
+
           </div>
 
           <div className="flex flex-col justify-center lg:mt-[72px]" style={{ maxWidth: 640 }}>

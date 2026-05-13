@@ -432,3 +432,11 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Lock the <html> scroll root when any Radix dialog/sheet is open.
+   Radix UI sets data-scroll-locked on <body> via react-remove-scroll,
+   but because <html> has overflow-x:clip it becomes the actual scroll
+   container — so we must lock it too. */
+html:has(body[data-scroll-locked]) {
+  overflow: hidden;
+}

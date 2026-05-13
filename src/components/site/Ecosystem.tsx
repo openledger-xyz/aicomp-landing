@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { ScrambledText } from "@/components/kinetic/ScrambledText";
-
+import { ApplyToBuildDialog } from "./ApplyToBuildDialog";
 
 const items = [
   { t: "Consumer App Founders", d: "Focus on the experience. Skip rebuilding the core.", icon: "rocket_launch" },
@@ -9,6 +10,8 @@ const items = [
 ];
 
 export function Ecosystem() {
+  const [dialogOpen, setDialogOpen] = useState(false);
+
   return (
     <section id="ecosystem" className="py-24 lg:py-32" style={{ borderBottom: "1px solid var(--ink)" }}>
       <div className="container-x">
@@ -67,12 +70,18 @@ export function Ecosystem() {
         </div>
 
         <div className="reveal mt-12 flex">
-          <a href="#testnet" className="btn btn-primary">
+          <button
+            type="button"
+            onClick={() => setDialogOpen(true)}
+            className="btn btn-primary"
+          >
             Apply to Build
             <span className="material-symbols-outlined" style={{ fontSize: 16, marginLeft: 6 }}>arrow_forward</span>
-          </a>
+          </button>
         </div>
       </div>
+
+      <ApplyToBuildDialog open={dialogOpen} onOpenChange={setDialogOpen} />
     </section>
   );
 }

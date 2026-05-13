@@ -59,7 +59,7 @@ export function Footer() {
               Twitter/X
             </a>
             <a
-              href="https://discord.com/"
+              href="https://discord.gg/wWDYct8q"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 ulink"
@@ -98,12 +98,12 @@ export function Footer() {
               Powered by <span style={{ color: "var(--primary)", fontWeight: 700 }}>$DOPE</span>.
             </span>
           </div>
-          <div className="flex gap-6" style={{ fontSize: 11 }}>
+          <div className="flex gap-6 md:pr-16" style={{ fontSize: 12 }}>
             <a href="#" className="ulink" style={{ color: "rgba(255,255,255,0.5)" }}>
-              Privacy
+              Privacy Policy
             </a>
             <a href="#" className="ulink" style={{ color: "rgba(255,255,255,0.5)" }}>
-              Terms
+              Terms &amp; Conditions
             </a>
           </div>
         </div>

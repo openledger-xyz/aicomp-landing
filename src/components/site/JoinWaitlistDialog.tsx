@@ -88,7 +88,7 @@ export function JoinWaitlistDialog({ open, onOpenChange }: JoinWaitlistDialogPro
                 </DialogDescription>
               </DialogHeader>
             </div>
-            <form onSubmit={handleSubmit} className="p-6">
+            <form onSubmit={handleSubmit} data-lenis-prevent className="p-6">
               <label
                 htmlFor="join-waitlist-email"
                 className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/55"

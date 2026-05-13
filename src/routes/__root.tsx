@@ -31,6 +31,7 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "google-site-verification", content: "9pC9CBaSRMUiP6ke4bTIriyXVk1RVqoCfmCWF1oD6YI" },
       { title: "Real-time infra layer for AI companions." },
       { name: "description", content: "Dopamint is real-time infrastructure for AI companions powering live voice, persistent identity, multimodal generation, and physical Ai embodiment." },
       { name: "author", content: "Dopamint" },
@@ -71,6 +72,15 @@ export const Route = createRootRoute({
       {
         rel: "stylesheet",
         href: appCss,
+      },
+    ],
+    scripts: [
+      {
+        src: "https://www.googletagmanager.com/gtag/js?id=G-43J55STCHT",
+        async: true,
+      },
+      {
+        children: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-43J55STCHT');`,
       },
     ],
   }),
