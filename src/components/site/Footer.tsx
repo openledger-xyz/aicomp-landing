@@ -46,7 +46,7 @@ export function Footer() {
           {/* Social links */}
           <div className="flex items-center gap-4 md:justify-end">
             <a
-              href="https://twitter.com/"
+              href="https://x.com/DopaMintLabs"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 ulink"

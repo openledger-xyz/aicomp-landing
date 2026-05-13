@@ -17,16 +17,16 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Dopamint — Real-time infrastructure for AI companions" },
+      { title: "Real-time infra layer for AI companions" },
       {
         name: "description",
         content:
-          "Dopamint powers emotionally intelligent companion products: live voice, persistent identity, multimodal generation, long-session memory.",
+          "Dopamint is real-time infrastructure for AI companions powering live voice, persistent identity, multimodal generation, and physical Ai embodiment.",
       },
-      { property: "og:title", content: "Dopamint — Real-time infrastructure for AI companions" },
+      { property: "og:title", content: "Real-time infra layer for AI companions" },
       {
         property: "og:description",
-        content: "Memory, voice, and persistent identity — wired into your product at runtime.",
+        content: "Dopamint is real-time infrastructure for AI companions powering live voice, persistent identity, multimodal generation, and physical Ai embodiment.",
       },
     ],
   }),
