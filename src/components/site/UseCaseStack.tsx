@@ -33,7 +33,7 @@ const useCases = [
     src: serviceImg,
   },
   {
-    title: "and so many more...",
+    title: "And so many more...",
     isOutro: true,
   },
 ];

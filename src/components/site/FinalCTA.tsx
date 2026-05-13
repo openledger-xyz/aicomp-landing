@@ -36,7 +36,7 @@ export function FinalCTA() {
             >
               <ScrambledText
                 as="div"
-                text="still duct-taping memory into your Ai companion build?"
+                text="Still duct-taping memory into your AI companion build?"
                 style={{ margin: 0 }}
               />
               <strong
