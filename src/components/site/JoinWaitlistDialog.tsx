@@ -65,7 +65,7 @@ export function JoinWaitlistDialog({ open, onOpenChange }: JoinWaitlistDialogPro
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         className={cn(
-          "max-w-[min(calc(100vw-2rem),440px)] gap-0 border border-ink p-0 shadow-2xl sm:rounded-sm",
+          "max-w-[min(calc(100vw-2rem),440px)] w-full gap-0 border border-ink p-0 shadow-2xl sm:rounded-sm overflow-hidden",
           phase === "success" &&
             "[&>button]:text-ink [&>button]:ring-offset-[var(--primary)] [&>button]:hover:bg-ink/10 [&>button]:hover:text-ink",
         )}
@@ -88,43 +88,50 @@ export function JoinWaitlistDialog({ open, onOpenChange }: JoinWaitlistDialogPro
                 </DialogDescription>
               </DialogHeader>
             </div>
-            <form onSubmit={handleSubmit} data-lenis-prevent className="p-6">
-              <label
-                htmlFor="join-waitlist-email"
-                className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/55"
-                style={{ fontFamily: "var(--font-body)" }}
-              >
-                Email
-              </label>
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-stretch">
-                <input
-                  id="join-waitlist-email"
-                  type="email"
-                  required
-                  autoComplete="email"
-                  placeholder="you@domain.com"
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                    if (emailError) setEmailError("");
-                  }}
-                  disabled={loading}
-                  className="min-h-[48px] flex-1 border border-ink bg-background px-4 py-3 text-sm outline-none transition-opacity disabled:opacity-60"
-                  style={{ color: "var(--ink)", letterSpacing: "0.04em" }}
-                />
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="btn btn-yellow shrink-0 justify-center disabled:opacity-70"
+            <form onSubmit={handleSubmit} data-lenis-prevent autoComplete="off" className="">
+              <div className="flex flex-col p-6">
+                <label
+                  htmlFor="join-waitlist-email"
+                  className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/55"
+                  style={{ fontFamily: "var(--font-body)" }}
                 >
-                  {loading ? "Sending…" : "Submit"}
-                </button>
+                  Email
+                </label>
+                <div className="flex flex-col gap-3">
+                  <input
+                    id="join-waitlist-email"
+                    type="text"
+                    inputMode="email"
+                    autoComplete="off"
+                    autoCorrect="off"
+                    autoCapitalize="off"
+                    spellCheck={false}
+                    data-1p-ignore
+                    data-lpignore="true"
+                    placeholder="you@domain.com"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      if (emailError) setEmailError("");
+                    }}
+                    disabled={loading}
+                    className="min-h-[48px] w-full border border-ink bg-background px-4 py-3 text-sm outline-none transition-opacity disabled:opacity-60"
+                    style={{ color: "var(--ink)", letterSpacing: "0.04em" }}
+                  />
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="btn btn-yellow w-full justify-center disabled:opacity-70"
+                  >
+                    {loading ? "Sending…" : "Submit"}
+                  </button>
+                </div>
+                {emailError ? (
+                  <p className="mt-3 text-sm text-red-600" role="alert">
+                    {emailError}
+                  </p>
+                ) : null}
               </div>
-              {emailError ? (
-                <p className="mt-3 text-sm text-red-600" role="alert">
-                  {emailError}
-                </p>
-              ) : null}
             </form>
           </>
         ) : (
